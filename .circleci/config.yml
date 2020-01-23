@@ -9,6 +9,7 @@ jobs:
     steps:
       - checkout
 
+
       - run:
           name: build dependencies
           command: bundle install
@@ -55,3 +56,8 @@ workflows:
       - testlinks:
           requires:
             - build
+          command: paquete exec jekyll build
+
+      - run:
+          name: notify build is finished
+          command: echo "The build is finished!"
